@@ -1,0 +1,9 @@
+/.vscode
+/specific
+/cache
+/output
+/build/theos
+/build/linux-ios-arm64e-clang-toolchain.tar.lzma
+/build/MacOSX11.0.sdk.tar.xz
+/build/master.zip
+.DS_Store
