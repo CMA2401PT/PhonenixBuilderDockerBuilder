@@ -14,27 +14,25 @@ make clean
 chmod 0644 ~/go/pkg/mod/github.com/sandertv/go-raknet@v1.9.1/conn.go
 sed "s/urrentProtocol byte = 10/urrentProtocol byte = 8/g" ~/go/pkg/mod/github.com/sandertv/go-raknet@v1.9.1/conn.go>~/conn.go
 cp -f ~/conn.go ~/go/pkg/mod/github.com/sandertv/go-raknet@v1.9.1/conn.go
-echo ""
-echo "Build"
+
+targets=""
 export THEOS=/theos
-echo "build linux"
-make build/phoenixbuilder
-mv build/phoenixbuilder build/phoenixbuilder-linux
-echo "build linux-v8"
-make build/phoenixbuilder-v8
-mv build/phoenixbuilder-v8 build/phoenixbuilder-v8-linux
-echo "build macos"
-make build/phoenixbuilder-macos-x86_64
-# echo "build macos-v8"
-# make build/phoenixbuilder-v8-macos-x86_64
-echo "build windows"
-make build/phoenixbuilder-windows-executable-x86_64.exe
-echo "build ios"
-make build/phoenixbuilder-ios-executable
-echo "build ios-v8"
-make build/phoenixbuilder-v8-ios-executable
-echo "build android"
-make build/phoenixbuilder-android-executable-arm64
-echo "build android-v8"
-make build/phoenixbuilder-v8-android-executable-arm64
+# Linux
+targets=${targets}" build/phoenixbuilder"
+# Linux-v8
+targets=${targets}" build/phoenixbuilder-v8"
+# MacOS
+targets=${targets}" build/phoenixbuilder-macos-x86_64"
+# Windows
+targets=${targets}" build/phoenixbuilder-windows-executable-x86_64.exe"
+# ios
+targets=${targets}" build/phoenixbuilder-ios-executable"
+# ios-v8
+targets=${targets}" build/phoenixbuilder-v8-ios-executable"
+# android
+targets=${targets}" build/phoenixbuilder-android-executable-arm64"
+# android-v8
+targets=${targets}" build/phoenixbuilder-v8-android-executable-arm64"
+echo "Start Build"
+make ${targets} -j8
 echo "Build Complete"
