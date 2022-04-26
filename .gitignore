@@ -1,5 +1,5 @@
 /.vscode
-/specific
+/specific.sh
 /cache
 /output
 /build/theos

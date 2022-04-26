@@ -5,6 +5,7 @@ set -e
 # bash docker/build/download_deps.sh
 # docker build -t cma2401pt/phoenixbuilderdockerbuilder build
 # docker run --name="builder" --rm --volume $PWD:/work --volume $PWD/docker/cache:/root/go -e HOST_UID=`id -u $USER` -e HOST_GID=`id -g $USER` -e HOST_USER=$USER cma2401pt/phoenixbuilder:latest  /bin/bash /work/docker/start.sh
+git config --global --add safe.directory /phoenixbuilder
 cd /phoenixbuilder
 source /etc/profile
 echo "Pre-Build & configure go-raknet"
